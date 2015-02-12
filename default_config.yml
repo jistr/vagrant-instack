@@ -1,0 +1,19 @@
+---
+master_ip: 192.168.77.2
+client_ips:
+- 192.168.77.10
+- 192.168.77.11
+- 192.168.77.12
+- 192.168.77.13
+dns_domain: instack.dev
+aws:
+  ami: <AMI>
+  ami_region: <AMI_REGION>
+  ssh_user: <SSH_USER>
+libvirt:
+  default_network: instack_default
+  default_prefix: instack
+  storage_pool_name: vagrant
+  private_net_0: instack_77
+  box: rhel-7.0
+  box_url: file:///home/jistr/projects/vagrant-libvirt-image-tools/output/rhel-7.0.box
