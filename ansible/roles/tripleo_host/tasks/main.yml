@@ -1,0 +1,31 @@
+- name: create the stack user
+  user:
+    name: stack
+    state: present
+
+- name: allow the stack user to manage libvirt
+  template:
+    src: stack-libvirt.pkla.j2
+    dest: /etc/polkit-1/localauthority/50-local.d/50-stack-libvirt.pkla
+    mode: 0644
+
+- name: generate ironic ssh driver key
+  shell: ssh-keygen -N "" -f "{{ vagrant_dir }}/ironic-keys/id_rsa"
+  args:
+    creates: "{{ vagrant_dir }}/ironic-keys/id_rsa"
+
+- name: authorize ironic key for the stack user
+  authorized_key:
+    user: stack
+    key: "{{ lookup('file', vagrant_dir + '/ironic-keys/id_rsa.pub') }}"
+
+- name: set LIBVIRT_DEFAULT_URI for the stack user
+  lineinfile:
+    dest: /home/stack/.bashrc
+    regexp: '^export LIBVIRT_DEFAULT_URI='
+    line: 'export LIBVIRT_DEFAULT_URI="qemu:///system"'
+    insertafter: EOF
+    create: yes
+    mode: 0644
+    owner: stack
+    group: stack

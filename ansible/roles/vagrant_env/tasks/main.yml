@@ -1,0 +1,12 @@
+# this is possible because the current directory when executing
+# a playbook will be vagrant_dir/ansible/playboooks
+- name: set vagrant_dir
+  set_fact:
+    vagrant_dir: "{{ ansible_env.PWD }}/../.."
+
+# set vagrant_dir from environment variable:
+#
+# - name: set vagrant_dir
+#   set_fact:
+#     vagrant_dir: "{{ lookup('env', 'VAGRANT_DIR') }}"
+#   failed_when: "lookup('env', 'VAGRANT_DIR') == ''"

@@ -1,6 +1,8 @@
 /.vagrant
+/ironic-keys/*
 /share/custom/*
 /share-master/overcloud-images/*
 
+!/ironic-keys/.gitkeep
 !/share/custom/.gitkeep
 !/share-master/overcloud-images/.gitkeep

@@ -23,3 +23,6 @@ libvirt:
   private_net_0: instack_77
   box: rhel-7.0
   box_url: file:///home/jistr/projects/vagrant-libvirt-image-tools/output/rhel-7.0.box
+  ironic_ssh_user: stack
+  ironic_ssh_ip: 192.168.77.1
+  ironic_ssh_private_key: ironic-keys/id_rsa
