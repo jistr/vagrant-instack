@@ -1,10 +1,16 @@
 ---
 master_ip: 192.168.77.2
-client_ips:
-- 192.168.77.10
-- 192.168.77.11
-- 192.168.77.12
-- 192.168.77.13
+# the client IP will not be used in the end (undercloud will assign one),
+# but Vagrant expects it to be present anyway
+clients:
+  - ip: 192.168.77.101
+    mac: '52:54:00:11:11:01'
+  - ip: 192.168.77.102
+    mac: '52:54:00:11:11:02'
+  - ip: 192.168.77.103
+    mac: '52:54:00:11:11:03'
+  - ip: 192.168.77.104
+    mac: '52:54:00:11:11:04'
 dns_domain: instack.dev
 aws:
   ami: <AMI>
