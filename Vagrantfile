@@ -57,7 +57,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vm_config.vm.synced_folder './share-master', '/vagrant-master', type: 'rsync'
 
     vm_config.vm.provider :libvirt do |libvirt|
-      libvirt.memory = 3072
+      libvirt.memory = 4096
     end
   end
 
